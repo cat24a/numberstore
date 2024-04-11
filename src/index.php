@@ -20,7 +20,7 @@
 header("Cache-Control: no-store");
 header("Content-Type: text/plain");
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: CREATE, GET, ADD, TAKE, OPTIONS");
+header("Access-Control-Allow-Methods: CREATE, GET, ADD, TAKE, OPTIONS, SET");
 try {
     require "donotputongithub.php";
     $db = new PDO($db_dsn, $db_user, $db_pass);
