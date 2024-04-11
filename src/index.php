@@ -57,6 +57,17 @@ try {
             http_response_code(204);
             break;
 
+        case 'SET':
+            $data = intval(file_get_contents("php://input"));
+            $query = $db->prepare("UPDATE `data` SET `data`=? WHERE `id`=?");
+            $query->execute([$data, hex2bin($id)]);
+            if($query->rowCount() != 1) {
+                http_response_code(404);
+                die();
+            }
+            http_response_code(204);
+            break;
+
         case 'TAKE':
             $data = intval(file_get_contents("php://input"));
             $query = $db->prepare("UPDATE `data` SET `data`=`data`-:data WHERE `id`=:id AND `data`>=:data");
